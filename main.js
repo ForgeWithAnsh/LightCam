@@ -3,6 +3,7 @@
 const hue = document.getElementById("hue");
 const sat = document.getElementById("sat");
 const light = document.getElementById("light");
+const opacity = document.getElementById("opacity");
 
 const overlay = document.getElementById("overlay");
 
@@ -11,11 +12,15 @@ function updateColor() {
     overlay.style.backgroundColor =
         `hsl(${hue.value}, ${sat.value}%, ${light.value}%)`;
 
+    overlay.style.opacity =
+        opacity.value / 100;
+
 }
 
 hue.addEventListener("input", updateColor);
 sat.addEventListener("input", updateColor);
 light.addEventListener("input", updateColor);
+opacity.addEventListener("input", updateColor);
 
 updateColor();
 
