@@ -4,38 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selfie Light</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Camera -->
+
     <video id="camera" autoplay playsinline></video>
+
+    <!-- Color Overlay -->
 
     <div id="overlay"></div>
 
-    <div class="controls">
+    <!-- Mode Buttons -->
+
+    <div class="mode-buttons">
+
+        <button id="showSliders">
+            🎚 Sliders
+        </button>
+
+        <button id="showPresets">
+            🎨 Presets
+        </button>
+
+        <button id="showBoth">
+            🧩 Both
+        </button>
+
+    </div>
+
+    <!-- Sliders -->
+
+    <div class="controls" id="sliderPanel">
 
         <label>
             Hue
-            <input type="range" id="hue" min="0" max="360" value="0">
+            <input type="range"
+                   id="hue"
+                   min="0"
+                   max="360"
+                   value="0">
         </label>
 
         <label>
             Saturation
-            <input type="range" id="sat" min="0" max="100" value="100">
+            <input type="range"
+                   id="sat"
+                   min="0"
+                   max="100"
+                   value="100">
         </label>
 
         <label>
             Brightness
-            <input type="range" id="light" min="0" max="100" value="50">
+            <input type="range"
+                   id="light"
+                   min="0"
+                   max="100"
+                   value="50">
         </label>
 
         <label>
             Opacity
-            <input type="range" id="opacity" min="0" max="100" value="100">
+            <input type="range"
+                   id="opacity"
+                   min="0"
+                   max="100"
+                   value="100">
         </label>
+
     </div>
 
-    <button id="capture">📸</button>
+    <!-- Presets -->
+
+    <div id="presetPanel">
+
+        <button class="preset"
+                data-h="0"
+                data-s="0"
+                data-l="100"
+                data-o="100">
+            White
+        </button>
+
+        <button class="preset"
+                data-h="40"
+                data-s="100"
+                data-l="60"
+                data-o="100">
+            Warm
+        </button>
+
+        <button class="preset"
+                data-h="220"
+                data-s="100"
+                data-l="60"
+                data-o="100">
+            Cool
+        </button>
+
+        <button class="preset"
+                data-h="0"
+                data-s="100"
+                data-l="50"
+                data-o="100">
+            Red
+        </button>
+
+        <button class="preset"
+                data-h="120"
+                data-s="100"
+                data-l="50"
+                data-o="100">
+            Green
+        </button>
+
+        <button class="preset"
+                data-h="240"
+                data-s="100"
+                data-l="50"
+                data-o="100">
+            Blue
+        </button>
+
+        <button class="preset"
+                data-h="280"
+                data-s="100"
+                data-l="50"
+                data-o="100">
+            Purple
+        </button>
+
+        <button class="preset"
+                data-h="30"
+                data-s="100"
+                data-l="50"
+                data-o="100">
+            Orange
+        </button>
+
+    </div>
+
+    <!-- Reset -->
+
+    <button id="resetBtn">
+        ↺ Reset
+    </button>
+
+    <!-- Capture -->
+
+    <button id="capture">
+        
+    </button>
+
+    <!-- Hidden Canvas -->
 
     <canvas id="canvas" style="display:none;"></canvas>
 
