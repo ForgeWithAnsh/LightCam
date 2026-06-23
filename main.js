@@ -157,28 +157,30 @@ async function startCamera() {
 
         const stream =
             await navigator.mediaDevices.getUserMedia({
-                video: {
-                    facingMode: "user"
-                }
+                video:{
+                    facingMode:"user"
+                },
+                audio:false
             });
 
         video.srcObject = stream;
 
-        video.onloadedmetadata = async () => {
+        await new Promise(resolve => {
 
-            try {
-                await video.play();
-            }
-            catch(error) {
-                console.error(error);
+            video.onloadeddata = () => {
+                resolve();
             };
 
-        };
+        });
+
+        await video.play();
+
+        console.log("Camera Ready");
 
     }
-    catch(error) {
+    catch(error){
 
-        console.error(error);
+        console.error("Camera Error:", error);
 
         setTimeout(
             startCamera,
@@ -202,8 +204,11 @@ const canvas =
 
 captureBtn.addEventListener("click", () => {
 
-    if(video.videoWidth === 0){
-        alert("Camera not ready");
+    if (
+        video.readyState < 2 ||
+        video.videoWidth === 0
+    ){
+        alert("Camera is still loading...");
         return;
     }
 
