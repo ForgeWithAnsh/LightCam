@@ -10,7 +10,6 @@ body{
     overflow:hidden;
 
     font-family:sans-serif;
-
     background:white;
 }
 
@@ -21,7 +20,6 @@ body{
     inset:0;
 
     background:white;
-    opacity:0.5;
 
     pointer-events:none;
 }
