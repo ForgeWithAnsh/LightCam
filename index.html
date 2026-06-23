@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selfie Light</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video id="camera" autoplay playsinline></video>
+
+    <div id="overlay"></div>
+
+    <div class="controls">
+
+        <label>
+            Hue
+            <input type="range" id="hue" min="0" max="360" value="0">
+        </label>
+
+        <label>
+            Saturation
+            <input type="range" id="sat" min="0" max="100" value="100">
+        </label>
+
+        <label>
+            Brightness
+            <input type="range" id="light" min="0" max="100" value="50">
+        </label>
+
+    </div>
+
+    <button id="capture">📸</button>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <script src="main.js"></script>
+
+</body>
+</html>

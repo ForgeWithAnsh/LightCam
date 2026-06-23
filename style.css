@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+
+    font-family:sans-serif;
+
+    background:white;
+}
+
+/* Color Overlay */
+
+#overlay{
+    position:fixed;
+    inset:0;
+
+    background:white;
+    opacity:0.5;
+
+    pointer-events:none;
+}
+
+/* Camera Preview */
+
+#camera{
+    position:fixed;
+
+    top:15px;
+    right:15px;
+
+    width:35vw;
+    height:50vw;
+
+    max-width:220px;
+    max-height:320px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    transform:scaleX(-1);
+
+    z-index:10;
+}
+
+/* Sliders */
+
+.controls{
+    position:fixed;
+
+    left:2.5vw;
+    bottom:10px;
+
+    width:95vw;
+
+    z-index:20;
+}
+
+label{
+    display:block;
+
+    color:white;
+
+    font-size:14px;
+
+    margin:6px 0;
+}
+
+input[type="range"]{
+    width:100%;
+
+    opacity:0.5;
+
+    margin-top:2px;
+}
+
+/* Capture Button */
+
+#capture{
+    position:fixed;
+
+    left:50%;
+    bottom:170px;
+
+    transform:translateX(-50%);
+
+    width:70px;
+    height:70px;
+
+    border:none;
+    border-radius:50%;
+
+    font-size:30px;
+
+    z-index:20;
+}
