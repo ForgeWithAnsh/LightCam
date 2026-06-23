@@ -13,7 +13,7 @@ body{
     background:white;
 }
 
-/* Color Overlay */
+/* Overlay */
 
 #overlay{
     position:fixed;
@@ -24,7 +24,7 @@ body{
     pointer-events:none;
 }
 
-/* Camera Preview */
+/* Camera */
 
 #camera{
     position:fixed;
@@ -47,7 +47,39 @@ body{
     z-index:10;
 }
 
-/* Sliders */
+/* Mode Buttons */
+
+.mode-buttons{
+    position:fixed;
+
+    left:2.5vw;
+    top:15px;
+
+    width:55vw;
+
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+
+    z-index:20;
+}
+
+.mode-buttons button{
+    padding:8px 10px;
+
+    border:none;
+    border-radius:8px;
+
+    background:rgba(255,255,255,0.2);
+
+    color:white;
+
+    font-size:12px;
+
+    backdrop-filter:blur(4px);
+}
+
+/* Slider Panel */
 
 .controls{
     position:fixed;
@@ -78,23 +110,150 @@ input[type="range"]{
     margin-top:2px;
 }
 
+/* Presets */
+
+#presetPanel{
+    position:fixed;
+
+    left:2.5vw;
+    bottom:10px;
+
+    width:95vw;
+
+    display:none;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    z-index:20;
+}
+
+.preset{
+    border:none;
+
+    border-radius:10px;
+
+    padding:10px 14px;
+
+    color:white;
+
+    font-weight:bold;
+}
+
+.preset.active{
+    outline:3px solid white;
+}
+
+/* Preset Colors */
+
+.preset:nth-child(1){
+    background:#ffffff;
+    color:black;
+}
+
+.preset:nth-child(2){
+    background:#ffb347;
+}
+
+.preset:nth-child(3){
+    background:#5dade2;
+}
+
+.preset:nth-child(4){
+    background:#ff4d4d;
+}
+
+.preset:nth-child(5){
+    background:#2ecc71;
+}
+
+.preset:nth-child(6){
+    background:#3498db;
+}
+
+.preset:nth-child(7){
+    background:#9b59b6;
+}
+
+.preset:nth-child(8){
+    background:#e67e22;
+}
+
+/* Reset Button */
+
+#resetBtn{
+    position:fixed;
+
+    left:20px;
+    bottom:390px;
+
+    padding:12px 18px;
+
+    border:2px solid rgba(255,255,255,0.5);
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.15);
+
+    color:white;
+
+    font-size:14px;
+    font-weight:bold;
+
+    backdrop-filter:blur(5px);
+
+    z-index:20;
+}
+
 /* Capture Button */
 
 #capture{
     position:fixed;
 
     left:50%;
-    bottom:170px;
+    bottom:300px;
 
     transform:translateX(-50%);
 
-    width:70px;
-    height:70px;
+    width:80px;
+    height:80px;
 
-    border:none;
+    border:5px solid white;
     border-radius:50%;
 
-    font-size:30px;
+    background:rgba(255,255,255,0.15);
+
+    color:transparent;
+    font-size:0;
 
     z-index:20;
+}
+
+#capture::after{
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:white;
+}
+
+/* Both Mode */
+
+body.both-mode .controls{
+    bottom:130px;
+}
+
+body.both-mode #presetPanel{
+    display:flex;
+    bottom:10px;
 }
