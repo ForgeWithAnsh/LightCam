@@ -14,7 +14,6 @@ function updateColor() {
 
     overlay.style.opacity =
         opacity.value / 100;
-
 }
 
 hue.addEventListener("input", updateColor);
@@ -29,23 +28,44 @@ updateColor();
 
 const video = document.getElementById("camera");
 
-navigator.mediaDevices.getUserMedia({
-    video: {
-        facingMode: "user"
+async function startCamera() {
+
+    try {
+
+        const stream =
+            await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "user"
+                }
+            });
+
+        video.srcObject = stream;
+
+        video.onloadedmetadata = async () => {
+
+            try {
+                await video.play();
+                console.log("Camera started");
+            }
+            catch(err) {
+                console.error("Video play error:", err);
+            }
+
+        };
+
     }
-})
-.then(stream => {
+    catch(error) {
 
-    video.srcObject = stream;
+        console.error("Camera Error:", error);
 
-    video.onloadedmetadata = () => {
-        video.play();
-    };
+        // Retry after 1 second
+        setTimeout(startCamera, 1000);
 
-})
-.catch(error => {
-    console.error("Camera Error:", error);
-});
+    }
+
+}
+
+startCamera();
 
 
 // ---------- Photo Capture ----------
@@ -54,6 +74,11 @@ const captureBtn = document.getElementById("capture");
 const canvas = document.getElementById("canvas");
 
 captureBtn.addEventListener("click", () => {
+
+    if (video.videoWidth === 0) {
+        alert("Camera is not ready yet.");
+        return;
+    }
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -77,7 +102,6 @@ captureBtn.addEventListener("click", () => {
     const link = document.createElement("a");
 
     link.download = "photo.png";
-
     link.href = canvas.toDataURL("image/png");
 
     link.click();
